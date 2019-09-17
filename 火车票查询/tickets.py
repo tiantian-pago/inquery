@@ -114,7 +114,7 @@ def cli():
         try:
             available_trains = response.json()['data']['result']
             TrainsCollection(available_trains, options).pretty_print()
-        except:
+        except Exception:
             print('请求错误，数据获取失败')
     else:
         print('获取火车数据失败')
