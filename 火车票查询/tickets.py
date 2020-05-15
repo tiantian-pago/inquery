@@ -102,12 +102,17 @@ def cli():
     from_station = station.get(arguments['<from>'])
     to_station = station.get(arguments['<to>'])
     date = arguments['<date>']
-    url= 'https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date={}&leftTicketDTO.from_station={}&leftTicketDTO.to_station={}&purpose_codes=ADULT'.format(date, from_station, to_station)
+    url= ('https://kyfw.12306.cn/otn/leftTicket/query?'
+        'leftTicketDTO.train_date={}&leftTicketDTO.from_station={}'
+        '&leftTicketDTO.to_station={}&purpose_codes=ADULT').format(date, from_station, to_station)
     options = [
         key for key, value in arguments.items() if value is True
     ]
     headers = {
-        'Cookie':'RAIL_EXPIRATION=1589843984247; RAIL_DEVICEID=OYTVUKt0COhMfNpS8Lom-k0je0J1nZWiA_m1Byg0zZ9F8hrytFTOK43IhffLYIiNsq2_SAuqFBo7vtJiu9MYrdyYPgnVFPtd74s1zuOKCr_YF61Vhy9wa9_mH8y-YyIYeIsOkjPM4sAk_x6Z9YOLYQfGbmsM1wD5; BIGipServerpool_passport=200081930.50215.0000; route=6f50b51faa11b987e576cdb301e545c4; _jc_save_fromStation=%u5317%u4EAC%2CBJP; _jc_save_toStation=%u868C%u57E0%2CBBH; _jc_save_fromDate=2020-05-15; _jc_save_toDate=2020-05-15',
+        'Cookie':'RAIL_EXPIRATION=1589843984247; RAIL_DEVICEID=OYTVUKt0COhMfNpS8Lom-k0je0J1nZWiA_m1Byg0zZ9F8hryt\
+        FTOK43IhffLYIiNsq2_SAuqFBo7vtJiu9MYrdyYPgnVFPtd74s1zuOKCr_YF61Vhy9wa9_mH8y-YyIYeIsOkjPM4sAk_x6Z9YOLYQfGbmsM1wD5;\
+        BIGipServerpool_passport=200081930.50215.0000; route=6f50b51faa11b987e576cdb301e545c4; _jc_save_fromStation=%u5317%u4EAC%2CBJP;\
+        _jc_save_toStation=%u868C%u57E0%2CBBH; _jc_save_fromDate=2020-05-15; _jc_save_toDate=2020-05-15',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.75 Safari/537.36'
     }
     requests.packages.urllib3.disable_warnings()
